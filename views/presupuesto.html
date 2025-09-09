@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Presupuesto</title>
     <link rel="stylesheet" href="../css/styles.css">
+    <script defer src="../js/presupuesto.js"></script>
 </head>
 <body>
     <header>
         <div class="logo">
             <a href="../index.html">
-            <img src="../img/logo.png" alt="Logotipo Empresa" width="384" height="291">
+                <img src="../img/logo.png" alt="Logotipo Empresa" width="384" height="291">
             </a>
         </div>
         <nav id="menu">
@@ -25,11 +26,15 @@
 
     <main>
         <h1>Solicitar presupuesto</h1>
-        <form action="submit_presupuesto.php" method="POST">
+        <form action="submit_presupuesto.php" method="POST" id="presupuestoForm">
             <label for="name">Nombre:</label>
             <input type="text" id="name" name="name" required 
                    pattern="^[a-zA-ZÀ-ÿ\s]{1,40}$" 
                    title="El nombre solo puede contener letras y espacios. Máximo 40 caracteres.">
+            <label for="surname">Apellido:</label>
+            <input type="text" id="surname" name="surname" required 
+                    pattern="^[a-zA-ZÀ-ÿ\s]{1,40}$" 
+                    title="El apellido solo puede contener letras y espacios. Máximo 40 caracteres.">
         
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required 
@@ -43,13 +48,57 @@
         
             <label for="info">Solicite más información:</label>
             <textarea id="info" name="info" rows="4" required></textarea>
-        
+
+            <h2>Opciones de Presupuesto</h2>
+            <div class="grid">
+                <div class="item" id="producto1">
+                    <img src="../img/producto1.jpg" alt="Producto 1" width="350" height="350">
+                    <p>Producto 1</p>
+                </div>
+                <div class="item" id="producto2">
+                    <img src="../img/producto2.jpg" alt="Producto 2" width="350" height="350">
+                    <p>Producto 2</p>
+                </div>
+                <div class="item" id="producto3">
+                    <img src="../img/producto3.jpg" alt="Producto 3" width="350" height="350">
+                    <p>Producto 3</p>
+                </div>
+                <div class="item" id="producto4">
+                    <img src="../img/producto4.jpg" alt="Producto 4" width="350" height="350">
+                    <p>Producto 4</p>
+                </div>
+            </div>    
+            
+            <label for="producto">Producto:</label>
+            <select id="producto" name="producto" required>
+                <option value="100">Producto A - 100 €</option>
+                <option value="200">Producto B - 200 €</option>
+                <option value="300">Producto C - 300 €</option>
+                <option value="400">Producto D - 400 €</option>
+            </select>
+            
+            <label for="plazo">Plazo de entrega (días):</label>
+            <input type="number" id="plazo" name="plazo" min="1" required>
+
+            <fieldset>
+                <legend>Extras:</legend>
+                <label><input type="checkbox" class="extra" value="50"> Extra 1 - 50 €</label>
+                <label><input type="checkbox" class="extra" value="75"> Extra 2 - 75 €</label>
+                <label><input type="checkbox" class="extra" value="100"> Extra 3 - 100 €</label>
+            </fieldset>
+            
+            <h3>Presupuesto Total: <span id="presupuestoTotal">0</span></h3>
+            
             <label for="privacy">
                 <input type="checkbox" id="privacy" name="privacy" required>
                 Acepto la Política de privacidad
             </label>
         
-            <button type="submit">Enviar</button>
+            <div class="boton-container">
+                <button type="submit">Enviar</button>
+                <button type="reset">Cancelar</button>
+            </div>
+            
         </form>        
     </main>
     <footer>

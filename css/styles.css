@@ -80,6 +80,63 @@ main {
     color: #005780;
     margin-top: 20px;
 }
+/* Efecto de latido para los títulos */
+h1, h2 {
+    transition: transform 0.3s ease, color 0.3s ease; /* Suaviza la animación */
+    display: inline-block;
+}
+
+h1:hover, h2:hover {
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño */
+    color: #007bff; /* Cambia el color a un azul más brillante (puedes personalizarlo) */
+}
+
+/* Efecto adicional para que se vea más "vivo" */
+h1, h2 {
+    cursor: pointer;
+}
+
+/* Estilos para el menú en móvil */
+@media (max-width: 768px) {
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 5px 0;
+    }
+
+    nav ul li a {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    /* Resalta la página activa y reduce el tamaño de las otras */
+    nav ul li a.active {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    nav ul li a:not(.active) {
+        opacity: 0.7;
+    }
+}
+
+/* Ajuste de imágenes "Inspírate" */
+.images-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.image-item img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+}
 
 /* Servicios y sobre nosotros */
 .services, .about {
@@ -141,44 +198,80 @@ main {
     object-fit: cover;
 }
 
-
 /* Imágenes galería de productos */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-}
-
-.item {
-    background-color: rgba(255, 255, 255, 0.8);
+/* Estilo para la galería Swiper */
+.swiper-container {
+    width: 90%;
+    max-width: 1200px;
+    height: 500px; /* Ajusta el contenedor a una altura fija */
+    margin: auto;
+    overflow: visible; /* Asegura que la imagen ampliada no se corte */
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden;
+    position: relative;
+}
+
+.swiper-wrapper {
     display: flex;
-    align-items: center;
+}
+
+.swiper-slide {
+    display: flex;
     justify-content: center;
+    align-items: center;
+    height: 100%; /* Ocupa toda la altura disponible */
+    overflow: visible; /* Asegura que las imágenes no se corten */
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: auto;
+    max-height: 100%; /* Asegura que la imagen no se estire fuera del contenedor */
+    object-fit: contain; /* Mantiene la proporción de la imagen */
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto de ampliación y sombra cuando se hace clic */
+.swiper-slide.clicked img {
+    transform: scale(1.15); /* Aumenta ligeramente el tamaño de la imagen */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Asegura que las imágenes no se corten al hacer hover */
+.swiper-slide:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo para los botones de navegación */
+.swiper-button-next, .swiper-button-prev {
+    color: #fff;
+}
+
+/* Estilo para la paginación activa */
+.swiper-pagination-bullet-active {
+    background-color: #007bff;
+}
+
+
+/* Presupuesto*/
+
+.item {
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.3s ease-in-out;
 }
 
 .item:hover {
     transform: scale(1.05);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
-.item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
+.item.seleccionado {
+    border: 3px solid #00796b; /* Borde verde */
+    box-shadow: 0 0 20px rgba(0, 121, 107, 0.7); /* Sombra verde */
+    transform: scale(1.05);
 }
 
-.item p {
-    display: none;
-}
-
-/* Presupuesto*/
 form {
     margin: 40px auto;
     padding: 30px;
@@ -227,6 +320,18 @@ button {
 
 button:hover {
     background-color: #003b58
+}
+
+.boton-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* Espacio entre los botones */
+    margin-top: 20px; /* Espacio sobre los botones */
+}
+
+.boton-container button {
+    width: 200px; /* Ancho uniforme para los botones */
 }
 
 /* Contacto */
