@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto</title>
     <link rel="stylesheet" href="../css/styles.css">
+    <script defer src="../js/contacto.js"></script>
 </head>
 <body>
     <header>
         <div class="logo">
             <a href="../index.html">
-            <img src="../img/logo.png" alt="Logotipo Empresa" width="384" height="291">
+                <img src="../img/logo.png" alt="Logotipo Empresa" width="384" height="291">
             </a>
         </div>
         <nav id="menu">
             <ul>
                 <li><a href="../index.html">Inicio</a></li>
-                <li><a href="../views/productos.html">Productos</a></li>
-                <li><a href="../views/presupuesto.html">Presupuesto</a></li>
+                <li><a href="../views/galeria.html">Productos</a></li>
                 <li><a href="../views/contacto.html" class="active">Contacto</a></li>
             </ul>
         </nav>
@@ -25,34 +25,68 @@
 
     <main>
         <h1>Contacto</h1>
-        <form action="submit_contacto.php" method="POST">
-            <label for="name">Nombre:</label>
-            <input type="text" id="name" name="name" required>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+        <div class="contact-banner">
+            <img src="../img/ilustracion-mar4.jpg" alt="Ilustración del mar" class="banner-img">
+        </div>
 
-            <label for="message">Mensaje:</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
+        <div class="contact-container">
+            <form id="contactoForm" action="submit_contacto.php" method="POST">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required
+                       pattern="^[a-zA-ZÀ-ÿ\s]{3,40}$"
+                       title="El nombre solo puede contener letras y espacios, mínimo 3 y máximo 40 caracteres.">
 
-            <button type="submit">Enviar</button>
-        </form>
+                <label for="surname">Apellidos:</label>
+                <input type="text" id="surname" name="surname" required
+                       pattern="^[a-zA-ZÀ-ÿ\s]{4,60}$"
+                       title="Los apellidos solo pueden contener letras y espacios, mínimo 4 y máximo 60 caracteres.">
 
-        <section class="mapa">
-            <h2>Ubicación de la empresa</h2>
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3058.1168318663486!2d-0.37639668447262407!3d39.47017707944829!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd60afdbdc939cf1%3A0xb8a1da6ffb7d5fcf!2sC/%20de%20l'Historiador%20Diago%2C%2017%2C%20Extramurs%2C%2046007%20Val%C3%A8ncia%2C%20Valencia!5e0!3m2!1ses!2ses!4v1709271612537!5m2!1ses!2ses" 
-                width="600" 
-                height="450" 
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy">
-            </iframe>
-        </section>
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" name="email" required
+                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                       title="Introduce un correo electrónico válido.">
+
+                <label for="phone">Teléfono:</label>
+                <input type="tel" id="phone" name="phone" required
+                       pattern="^[0-9]{9}$"
+                       title="Introduce un número de teléfono de 9 dígitos.">
+
+                <label for="comments">Comentarios:</label>
+                <textarea id="comments" name="comments" rows="4"></textarea>
+
+                <div class="boton-container">
+                    <button type="submit">Enviar</button>
+                    <button type="reset">Limpiar</button>
+                </div>
+            </form>
+
+            <section class="mapa">
+                <h2>Dónde estamos</h2>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3058.1168318663486!2d-0.37639668447262407!3d39.47017707944829!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd60afdbdc939cf1%3A0xb8a1da6ffb7d5fcf!2sC/%20de%20l'Historiador%20Diago%2C%2017%2C%20Extramurs%2C%2046007%20Val%C3%A8ncia%2C%20Valencia!5e0!3m2!1ses!2ses!4v1709271612537!5m2!1ses!2ses" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </section>
+        </div>
     </main>
+
     <footer>
-        <p>Calle Ejemplo 123, Ciudad, País</p>
-        <p>Aviso legal</p>
+        <div class="footer-info">
+            <p>C/ Historiador Diago, 17, Extramurs, 46007 Valencia</p>
+            <p>Aviso legal</p>
+        </div>
+
+        <div class="footer-nav">
+            <ul>
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="galeria.html">Galería</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </div>
+
         <div class="social">
             <a href="https://www.instagram.com" target="_blank">
                 <img src="../img/instagram.svg" alt="Instagram" width="30" height="30">
@@ -67,6 +101,6 @@
                 <img src="../img/tiktok.svg" alt="TikTok" width="30" height="30">
             </a>
         </div>
-    </footer>  
+    </footer>
 </body>
 </html>

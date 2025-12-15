@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const sections = document.querySelectorAll('.hero, .services, .about, .news');
+    const sections = document.querySelectorAll('.hero, .services, .about');
     const observerOptions = {
         root: null,
         rootMargin: '0px',
