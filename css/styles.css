@@ -216,9 +216,11 @@ h1:hover, h2:hover {
 }
 
 .swiper-slide img {
-    max-width: 80%;    /* hace la imagen más pequeñita dentro del cuadrado */
-    max-height: 80%;   /* mantiene proporción */
-    object-fit: contain;
+    max-width: 100%;   /* nunca más ancho que el slide */
+    max-height: 100%;  /* nunca más alto que el slide */
+    width: auto;       /* respeta proporción */
+    height: auto;      /* respeta proporción */
+    object-fit: contain; 
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 10px;
 }
